@@ -31,6 +31,12 @@
 (when (require 'use-package nil 'noerror)
   (package-install 'use-package))
 
+(use-package all-the-icons
+  :ensure t)
+
+(use-package all-the-icons-dired
+  :ensure t)
+
 (use-package bind-key
   :ensure t
   :config
@@ -86,6 +92,31 @@
 (use-package leuven-theme
   :ensure t)
 
+(use-package skk
+  :ensure ddskk
+  :bind ("C-x C-j" . skk-mode))
+
+(use-package markdown-mode
+  :ensure t
+  :config
+  (set-face-attribute 'markdown-code-face nil :inherit 'default))
+
+(use-package neotree
+  :ensure t
+  :bind ("C-q" . neotree-toggle)
+  :config  
+  (setq neo-show-hidden-files t
+	neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
+(use-package spaceline
+  :ensure t
+  :config
+  (spaceline-spacemacs-theme))
+
+(use-package spaceline-all-the-icons
+  :ensure t
+  :after spaceline)
+  
 (use-package yasnippet
   :ensure t
   :diminish yas-minor-mode
@@ -96,13 +127,3 @@
 (use-package yasnippet-snippets
   :ensure t
   :after (yasnippet))
-
-(use-package skk
-  :ensure ddskk
-  :bind ("C-x C-j" . skk-mode))
-
-(use-package markdown-mode
-  :ensure t
-  :config
-  (set-face-attribute 'markdown-code-face nil :inherit 'default))
-
